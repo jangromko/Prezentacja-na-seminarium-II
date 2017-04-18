@@ -1,0 +1,326 @@
+\documentclass[10pt]{beamer}
+\usetheme[
+%%% option passed to the outer theme
+%    progressstyle=fixedCircCnt,   % fixedCircCnt, movingCircCnt (moving is deault)
+  ]{Feather}
+  
+% If you want to change the colors of the various elements in the theme, edit and uncomment the following lines
+
+% Change the bar colors:
+\setbeamercolor{Feather}{fg=black!20,bg=black}
+
+% Change the color of the structural elements:
+\setbeamercolor{structure}{fg=black}
+
+% Change the frame title text color:
+%\setbeamercolor{frametitle}{fg=blue}
+
+% Change the normal text color background:
+%\setbeamercolor{normal text}{fg=black,bg=gray!10}
+
+%-------------------------------------------------------
+% INCLUDE PACKAGES
+%-------------------------------------------------------
+
+\usepackage[utf8]{inputenc}
+\usepackage[polish]{babel}
+\usepackage{polski}
+\usepackage[T1]{fontenc}
+\usepackage{helvet}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{soul}
+
+
+%-------------------------------------------------------
+% DEFFINING AND REDEFINING COMMANDS
+%-------------------------------------------------------
+\DeclareCaptionLabelSeparator{kropka}{. }
+\setbeamertemplate{caption}[numbered]
+\captionsetup[figure]{labelformat=simple, labelsep=kropka}
+\captionsetup[table]{labelformat=simple, labelsep=kropka}
+\addto\captionspolish{\renewcommand{\tablename}{Tabela}}
+
+\newcolumntype{k}[1]{>{\centering\arraybackslash}m{#1}}
+
+% colored hyperlinks
+\newcommand{\chref}[2]{
+  \href{#1}{{\usebeamercolor[bg]{Feather}#2}}
+}
+
+%-------------------------------------------------------
+% INFORMATION IN THE TITLE PAGE
+%-------------------------------------------------------
+
+\title[Zastosowanie algorytmów ewolucyjnych do wyznaczania przybliżonych reduktów] % [] is optional - is placed on the bottom of the sidebar on every slide
+{ % is placed on the title page
+      \textbf{Zastosowanie algorytmów ewolucyjnych do~wyznaczania przybliżonych reduktów}
+}
+
+\author[Jan Gromko]
+{
+	\textbf{Dyplomant: Jan Gromko}\\
+	\textbf{Promotor: prof. dr hab. Jarosław Stepaniuk}
+}
+
+\institute[WI PB]
+{
+      Wydział Informatyki Politechniki Białostockiej
+}
+
+\date{19 kwietnia 2017 r.}
+
+
+\begin{document}
+
+
+{\1% wybór pliku na tło
+\begin{frame}[plain,noframenumbering]
+\begin{spacing}{1.5}
+  \titlepage
+\end{spacing}
+\end{frame}}
+
+
+\begin{frame}{Plan referatu}{}
+\tableofcontents
+\end{frame}
+
+
+\section{Redukcja}
+
+\subsection{Czym jest redukcja}
+
+
+\subsection{Prosty algorytm wyznaczania reduktu}
+
+
+\subsection{Problem złożoności dokładnych algorytmów redukcji}
+
+
+\subsection{Alternatywne metody redukcji}
+
+
+\section{Propozycja algorytmu genetycznego do wyznaczania przybliżonych reduktów}
+\begin{frame}
+\frametitle{Propozycja algorytmu genetycznego -- źródło}
+
+Lian Chen, Hongling Liu, Zilong Wan\\
+Computer Center, Nanchang University\\
+\newblock An Attribute Reduction Algorithm Based on Rough Set Theory\\
+and an Improved Genetic Algorithm (2014)
+
+\end{frame}
+
+%------------------------------------------------
+\subsection{Założenia algorytmu}
+%------------------------------------------------
+\begin{frame}
+\frametitle{Dane wejściowe i wyjściowe algorytmu}
+
+\begin{block}{Wejście}
+System informacyjny $S = (U, Q, V, f)$, gdzie $Q = A \cup D$.
+\end{block}
+$\newline$
+\begin{block}{Wyjście}
+Wynik optymalnej redukcji zbioru.
+\end{block}
+
+\end{frame}
+
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{Metoda kodowania informacji}
+\begin{spacing}{1.5}
+\begin{flushleft}
+Chromosomem będzie jednowymiarowa tablica binarna o stałej długości. Długość chromosomu odpowiada liczbie atrybutów warunkowych.\\
+Każdy z genów odpowiada dokładnie jednemu atryutowi warunkowemu, przy czym wartość 1 będzie ozbaczała, iż atrybut jest~wybrany,
+0~w~przeciwnym wypadku.
+\end{flushleft}
+\end{spacing}
+
+\end{frame}
+
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{Generowanie początkowej populacji}
+\begin{spacing}{1.5}
+\begin{flushleft}
+Wartość genów odpowiadających atrybutom należącym do rdzenia ustawiana jest na 1, wartość pozostałych genów ustawiana jest losowo 
+na~0~lub~1.
+\end{flushleft}
+\end{spacing}
+
+\end{frame}
+
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{Funkcja przystosowania}
+\begin{spacing}{1.5}
+\begin{flushleft}
+Jakość przystosowania pojedynczego osobnika, zgodnie z definicją redukcji, opiera się na dwóch aspektach -- liczbie atrybutów, które~zawiera (powinna ona być możliwie jak najmniejsza) oraz~zachowanej rozróżnialności obiektów (powinna być jak~największa).
+\end{flushleft}
+\end{spacing}
+
+\end{frame}
+
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{Funkcja przystosowania}
+\begin{spacing}{1.5}
+\begin{flushleft}
+Zgodnie z tymi wymaganiami, funkcja przystosowania ma postać:\\
+$$f(x) = {\frac{1}{rozmiar(x)}} + \sigma(x),$$\\
+gdzie $rozmiar(x)$ oznacza liczbę atrybutów, które zawiera chromosom,  natomiast $\sigma(x)$ jest znormalizowanym współczynnikiem istotności zbioru atrybutów chromosomu.
+
+\end{flushleft}
+\end{spacing}
+
+\end{frame}
+
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{Selekcja osobników}
+\begin{spacing}{1.5}
+\begin{flushleft}
+Prawdopodobieństwo wybrania danego osobnika \textit{i} wynosi $p_{si} = \frac{f_{i}}{\sum\limits_{i}^{n}f_{i}}$,\\
+gdzie $f_{i}$ jest wartością funkcji przystosowania dla pojedynczego osobnika $i$, natomiast $n$ jest rozmiarem populacji.\\
+$\newline$
+Jeśli wartość funkcji przystosowania najsłabiej przystosowanego osobnika
+w~bieżącym pokoleniu jest niższa, niż wartość funkcji przystosowania najlepiej przystosowanego osobnika z poprzedniego pokolenia, 
+wówczas~najsłabszy osobnik z bieżącego pokolenia jest~zastępowany najlepszym osobnikiem z poprzedniego pokolenia.
+\end{flushleft}
+\end{spacing}
+
+\end{frame}
+
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{Operacja krzyżowania}
+\begin{spacing}{1.5}
+\begin{flushleft}
+Algorytm zakłada krzyżowanie jednopunktowe -- dla każdej pary osobników (w tym wypadku -- chromosomów), losowo wybierany jeden punkt, 
+a~następnie części chromosomów zamieniane są między osobnikami 
+według~tego punktu, co tworzy osobniki kolejnego pokolenia.
+\end{flushleft}
+\end{spacing}
+
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{Operacja mutacji}
+\begin{spacing}{1.5}
+\begin{flushleft}
+Poszczególne geny w chromosomach zmieniane są losowo z~pewnym ustalonym prawdopodobieństwem.\\
+Przy przeprowadzaniu mutacji chronione przed mutacją są geny związane 
+z atrybutami należącymi do rdzenia.
+\end{flushleft}
+\end{spacing}
+
+\end{frame}
+
+%------------------------------------------------
+\subsection{Schemat działania}
+%------------------------------------------------
+\begin{frame}
+\frametitle{Algorytm}
+\begin{spacing}{1.3}
+\begin{flushleft}
+\begin{enumerate}[1.]
+\item Wygenerowanie populacji początkowej.
+\item Obliczenie znormalizowanego współczynnika istotności\\
+dla każdego chromosomu.
+\item Selekcja osobników na podstawie algorytmu koła ruletki.
+\item Krzyżowanie.
+\item Mutacje.
+\item Obliczenie wartości funkcji przystosowania dla każdego chromosomu.
+\item Sprawdzenie warunku zatrzymania algorytmu -- jeśli warunek\\
+jest spełniony, algorytm jest zatrzymywany.\\
+W przeciwnym razie powrót do punktu 3.
+\end{enumerate}
+\end{flushleft}
+\end{spacing}
+
+\end{frame}
+
+%------------------------------------------------
+%\begin{frame}
+%\frametitle{Algorytm -- modyfikacja}
+%\begin{spacing}{1.3}
+%\begin{flushleft}
+%Modyfikacja algorytmu -- dla każdego chromosomu:
+%\begin{enumerate}[1.]
+%\item Zaczynając od początku, dopóki obszar pozytywny zbioru atrybutów danego chromosomu nie jest równy obszarowi pozytywnemu oryginalnego zbioru, wartość genu zmieniana jest z 0 na 1.
+%\item Od pierwszego do ostatniego genu w chromosomie: zmieniana jest wartość genu z 0 na 1; jeśli obszar pozytywny zbioru atrybutów chromosomu jest równy obszarowi pozytywnemu oryginalnego zbioru, proces ten jest kontynuowany, w przeciwnym razie wartość genu przywracana jest na 1.
+%\end{enumerate}
+%\end{flushleft}
+%\end{spacing}
+
+%\end{frame}
+
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{Redukcja na podstawie najlepszego osobnika}
+\begin{spacing}{1.3}
+\begin{flushleft}
+\begin{enumerate}[1.]
+\item Jeśli zbiór atrybutów najlepszego osobnika zawiera atrybuty,\\
+których współczynnik istotności nie został obliczony,\\
+przejście do punktu 2.; w przeciwnym razie przejście do punktu 3.
+\item Obliczany jest współczynnik istotności każdego atrybutu,\\
+dla którego nie został on wcześniej wyliczony. Jeśli $\sigma(a) = 0$,\\ wartość genu zmieniana jest z 1 na 0.
+\item Wyznaczonym reduktem jest fenotyp najlepszego znalezionego osobnika, po ewentualnych modyfikacjach z punktu 2.
+\end{enumerate}
+\end{flushleft}
+\end{spacing}
+
+\end{frame}
+
+
+
+
+
+% KONIEC – BIBLIOGRAFIA I SLAJD KOŃCOWY NA PYTANIA
+
+\begin{frame}
+\frametitle{Bibliografia}
+\footnotesize
+{
+\begin{thebibliography}{99}
+\bibitem{p1} Zdzisław Pawlak
+\newblock Zbiory przybliżone -- nowa matematyczna metoda analizy danych 
+\bibitem{p1} Leszek Rutkowski
+\newblock Metody i techniki sztucznej inteligencji
+\bibitem{p1} Jakub Wróblewski
+\newblock Adaptacyjne metody klasyfikacji obiektów
+\bibitem{p1} Maciej Kopczyński
+\newblock Wspomaganie decyzji oparte na sprzętowej realizacji metod zbiorów~przybliżonych
+\end{thebibliography}
+}
+\end{frame}
+
+
+{\1
+\begin{frame}[plain,noframenumbering]
+  \finalpage
+  {
+  \begin{huge}
+  	Pytania
+  \end{huge}
+  
+  }
+\end{frame}
+}
+
+\end{document}
