@@ -1,10 +1,10 @@
 \beamer@endinputifotherversion {3.24pt}
 \select@language {polish}
 \beamer@sectionintoc {1}{Redukcja}{3}{0}{1}
-\beamer@subsectionintoc {1}{1}{Czym jest redukcja}{3}{0}{1}
-\beamer@subsectionintoc {1}{2}{Prosty algorytm wyznaczania reduktu}{3}{0}{1}
-\beamer@subsectionintoc {1}{3}{Problem z\IeC {\l }o\IeC {\.z}ono\IeC {\'s}ci dok\IeC {\l }adnych algorytm\IeC {\'o}w redukcji}{3}{0}{1}
-\beamer@subsectionintoc {1}{4}{Alternatywne metody redukcji}{3}{0}{1}
-\beamer@sectionintoc {2}{Propozycja algorytmu genetycznego do wyznaczania przybli\IeC {\.z}onych redukt\IeC {\'o}w}{3}{0}{2}
-\beamer@subsectionintoc {2}{1}{Za\IeC {\l }o\IeC {\.z}enia algorytmu}{4}{0}{2}
-\beamer@subsectionintoc {2}{2}{Schemat dzia\IeC {\l }ania}{12}{0}{2}
+\beamer@subsectionintoc {1}{1}{Istota problemu redukcji}{3}{0}{1}
+\beamer@subsectionintoc {1}{2}{Prosty algorytm wyznaczania reduktu}{11}{0}{1}
+\beamer@subsectionintoc {1}{3}{Problem z\IeC {\l }o\IeC {\.z}ono\IeC {\'s}ci dok\IeC {\l }adnych algorytm\IeC {\'o}w redukcji}{16}{0}{1}
+\beamer@subsectionintoc {1}{4}{Alternatywne metody redukcji}{17}{0}{1}
+\beamer@sectionintoc {2}{Propozycja algorytmu genetycznego do wyznaczania przybli\IeC {\.z}onych~redukt\IeC {\'o}w}{18}{0}{2}
+\beamer@subsectionintoc {2}{1}{Za\IeC {\l }o\IeC {\.z}enia algorytmu}{19}{0}{2}
+\beamer@subsectionintoc {2}{2}{Schemat dzia\IeC {\l }ania}{27}{0}{2}

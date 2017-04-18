@@ -92,19 +92,367 @@
 
 \section{Redukcja}
 
-\subsection{Czym jest redukcja}
+\subsection{Istota problemu redukcji}
+\begin{frame}{Redukcja}
+\begin{spacing}{1.5}
+\textbf{Czy można zredukować zbiór pod~względem atrybutów w~ten~sposób, by~zachowana była rozróżnialność elementów z~oryginalnego zbioru?}
+\end{spacing}
+\end{frame}
+
+\begin{frame}
+\frametitle{Redukcja}
+\begin{spacing}{1.5}
+\begin{block}{Zbiór niezależny}
+Zbiór atrybutów $B_{1} \subset A$ jest \textit{niezależny} w danym systemie informacyjnym, jeśli dla każdego $B_{2} \subset B_{1}$ zachodzi $IND(B_{1}) \neq IND(B_{2})$.
+\end{block}
+
+\begin{block}{Redukt}
+\textit{Reduktem} zbioru atrybutów $B_{1} \subseteq A$ nazywamy każdy niezależny zbiór $B_{2} \subseteq B_{1}$, dla którego $IND(B_{1}) = IND(B_{2})$, przy czym $B_{2}$ powinien być 
+jak najmniej liczny. Może istnieć wiele reduktów.
+\end{block}
+\end{spacing}
+\end{frame}
+
+
+\begin{frame}{Macierz rozróżnialności}
+\renewcommand{\arraystretch}{1}
+\begin{center}
+\begin{table}
+\begin{tabular}{|k{1cm}|k{1cm}|k{1cm}|k{1cm}|k{1cm}|k{1cm}|k{1cm}|@{}m{0pt}@{}}
+\hline
+& 1 & 2 & 3 & 4 & 5 & 6&\\[1ex]
+\hline
+1 & $\emptyset$ & -- & -- & -- & -- & -- &\\[1ex]
+\hline
+2 & $\emptyset$ & $\emptyset$ & -- & -- & -- & -- &\\[1ex]
+\hline
+3 & $\emptyset$ & $\emptyset$ & $\emptyset$ & -- & -- & -- &\\[1ex]
+\hline
+4 & t & g, m, t & g, t & $\emptyset$ & -- & -- &\\[1ex]
+\hline
+5 & g, m & $\emptyset$ & m, t & $\emptyset$ & $\emptyset$ & -- &\\[1ex]
+\hline
+6 &$\emptyset$ & $\emptyset$ & $\emptyset$ & m, t & g, t & $\emptyset$ &\\[1ex]
+\hline
+\end{tabular}
+\caption{Macierz rozróżnialności.}
+\end{table}
+
+\end{center}
+
+\begin{flushleft}
+\textit{g} -- ból głowy; 
+\textit{m} -- ból mięśni; 
+\textit{t} -- temperatura
+\end{flushleft}
+
+\end{frame}
+
+
+\begin{frame}{Tworzenie macierzy rozróżnialności}
+\renewcommand{\arraystretch}{1}
+\begin{center}
+
+\begin{table}
+\begin{tabular}{|k{1.2cm}|k{1.8cm}|k{1.8cm}|k{2.2cm}|k{1.4cm}|@{}m{0pt}@{}}
+\hline
+\textit{Pacjent} & \textit{Ból głowy} & \textit{Ból mięśni} & \textit{Temperatura} &  \textit{Grypa} &\\[1ex]
+\hline
+1 & nie & tak & podwyższona & tak &\\[1ex]
+4 & nie & tak & normalna & nie &\\[1ex]
+\hline
+\end{tabular}
+\caption{Fragment tablicy decyzyjnej.}
+\end{table}
+
+\begin{table}
+\begin{tabular}{|k{1cm}|k{1cm}|k{1cm}|k{1cm}|k{1cm}|k{1cm}|k{1cm}|@{}m{0pt}@{}}
+\hline
+& 1 & 2 & 3 & 4 & 5 & 6 & \\[1ex]
+\hline
+4 & t & ? & ? & $\emptyset$ & -- & -- &\\[1ex]
+\hline
+\end{tabular}
+\caption{Fragment macierzy rozróżnialności.}
+\end{table}
+
+\end{center}
+
+\end{frame}
+
+
+\begin{frame}{Tworzenie macierzy rozróżnialności}
+\renewcommand{\arraystretch}{1}
+\begin{center}
+
+\begin{table}
+\begin{tabular}{|k{1.2cm}|k{1.8cm}|k{1.8cm}|k{2.2cm}|k{1.4cm}|@{}m{0pt}@{}}
+\hline
+\textit{Pacjent} & \textit{Ból głowy} & \textit{Ból mięśni} & \textit{Temperatura} &  \textit{Grypa} &\\[1ex]
+\hline
+2 & tak & nie & podwyższona & tak &\\[1ex]
+4 & nie & tak & normalna & nie &\\[1ex]
+\hline
+\end{tabular}
+\caption{Fragment tablicy decyzyjnej.}
+\end{table}
+
+\begin{table}
+\begin{tabular}{|k{1cm}|k{1cm}|k{1cm}|k{1cm}|k{1cm}|k{1cm}|k{1cm}|@{}m{0pt}@{}}
+\hline
+& 1 & 2 & 3 & 4 & 5 & 6 & \\[1ex]
+\hline
+4 & t & g, m, t & ? & $\emptyset$ & -- & -- &\\[1ex]
+\hline
+\end{tabular}
+\caption{Fragment macierzy rozróżnialności.}
+\end{table}
+
+\end{center}
+
+\end{frame}
+
+
+\begin{frame}{Tworzenie macierzy rozróżnialności}
+\renewcommand{\arraystretch}{1}
+\begin{center}
+
+\begin{table}
+\begin{tabular}{|k{1.2cm}|k{1.8cm}|k{1.8cm}|k{2.2cm}|k{1.4cm}|@{}m{0pt}@{}}
+\hline
+\textit{Pacjent} & \textit{Ból głowy} & \textit{Ból mięśni} & \textit{Temperatura} &  \textit{Grypa} &\\[1ex]
+\hline
+3 & tak & tak & wysoka & tak &\\[1ex]
+4 & nie & tak & normalna & nie &\\[1ex]
+\hline
+\end{tabular}
+\caption{Fragment tablicy decyzyjnej.}
+\end{table}
+
+\begin{table}
+\begin{tabular}{|k{1cm}|k{1cm}|k{1cm}|k{1cm}|k{1cm}|k{1cm}|k{1cm}|@{}m{0pt}@{}}
+\hline
+& 1 & 2 & 3 & 4 & 5 & 6 & \\[1ex]
+\hline
+4 & t & g, m, t & g, t & $\emptyset$ & -- & -- &\\[1ex]
+\hline
+\end{tabular}
+\caption{Fragment macierzy rozróżnialności.}
+\end{table}
+
+\end{center}
+
+\end{frame}
+
+
+
+\begin{frame}{Macierz rozróżnialności -- oryginalny zbiór}
+\renewcommand{\arraystretch}{1}
+\begin{center}
+\begin{table}
+\begin{tabular}{|k{1cm}|k{1cm}|k{1cm}|k{1cm}|k{1cm}|k{1cm}|k{1cm}|@{}m{0pt}@{}}
+\hline
+& 1 & 2 & 3 & 4 & 5 & 6&\\[1ex]
+\hline
+1 & $\emptyset$ & -- & -- & -- & -- & -- &\\[1ex]
+\hline
+2 & $\emptyset$ & $\emptyset$ & -- & -- & -- & -- &\\[1ex]
+\hline
+3 & $\emptyset$ & $\emptyset$ & $\emptyset$ & -- & -- & -- &\\[1ex]
+\hline
+4 & t & g, m, t & g, t & $\emptyset$ & -- & -- &\\[1ex]
+\hline
+5 & g, m & $\emptyset$ & m, t & $\emptyset$ & $\emptyset$ & -- &\\[1ex]
+\hline
+6 &$\emptyset$ & $\emptyset$ & $\emptyset$ & m, t & g, t & $\emptyset$ &\\[1ex]
+\hline
+\end{tabular}
+\caption{Macierz rozróżnialności.}
+\end{table}
+
+\end{center}
+
+\end{frame}
+
+
+
+\begin{frame}{Macierz rozróżnialności -- redukcja}
+\renewcommand{\arraystretch}{1}
+\begin{center}
+\begin{table}
+\begin{tabular}{|k{1cm}|k{1cm}|k{1cm}|k{1cm}|k{1cm}|k{1cm}|k{1cm}|@{}m{0pt}@{}}
+\hline
+& 1 & 2 & 3 & 4 & 5 & 6 &\\[1ex]
+\hline
+1 & $\emptyset$ & -- & -- & -- & -- & --&\\[1ex]
+\hline
+2 & $\emptyset$ & $\emptyset$ & -- & -- & -- & --&\\[1ex]
+\hline
+3 & $\emptyset$ & $\emptyset$ & $\emptyset$ & -- & -- & --&\\[1ex]
+\hline
+4 & t & g, t & g, t & $\emptyset$ & -- & --&\\[1ex]
+\hline
+5 & g & $\emptyset$ & t & $\emptyset$ & $\emptyset$ & --&\\[1ex]
+\hline
+6 &$\emptyset$ & $\emptyset$ & $\emptyset$ & t & g, t & $\emptyset$&\\[1ex]
+\hline
+\end{tabular}
+\caption{Macierz rozróżnialności po redukcji.}
+\end{table}
+
+\end{center}
+
+\end{frame}
 
 
 \subsection{Prosty algorytm wyznaczania reduktu}
 
+\begin{frame}{Prosty algorytm wyznaczania reduktu}
+\begin{spacing}{1.5}
+\begin{enumerate}
+\item Zliczenie wystąpień atrybutów w macierzy rozróżnialności.
+\item Wybór atrybutu występującego najliczniej w macierzy rozróżnialności; dodanie wybranego atrybutu do wynikowego zbioru atrybutów $Red$.
+\item Wykreślenie komórek zawierających wybrany atrybut.
+\item Jeśli wszystkie komórki zostały wykreślone, wynikiem jest uzyskany zbiór $Red$, w przeciwnym razie powrót do kroku 1.
+\end{enumerate}
+\end{spacing}
+\end{frame}
+
+
+
+\begin{frame}{Prosty algorytm redukcji}
+\renewcommand{\arraystretch}{1}
+\begin{center}
+\begin{table}
+\begin{tabular}{|k{1cm}|k{1cm}|k{1cm}|k{1cm}|k{1cm}|k{1cm}|k{1cm}|@{}m{0pt}@{}}
+\hline
+& 1 & 2 & 3 & 4 & 5 & 6&\\[1ex]
+\hline
+4 & t & g, m, t & g, t & $\emptyset$ & -- & -- &\\[1ex]
+\hline
+5 & g, m & $\emptyset$ & m, t & $\emptyset$ & $\emptyset$ & -- &\\[1ex]
+\hline
+6 &$\emptyset$ & $\emptyset$ & $\emptyset$ & m, t & g, t & $\emptyset$ &\\[1ex]
+\hline
+\end{tabular}
+\caption{Fragment macierzy rozróżnialności zawierający istotne dane.}
+\end{table}
+$\newline$
+\begin{spacing}{1.5}
+g -- 4~~~~~~~~~~~~~m -- 4~~~~~~~~~~~~~\alert{t -- 6}\\
+\end{spacing}
+\end{center}
+\end{frame}
+
+
+\begin{frame}{Prosty algorytm redukcji}
+\renewcommand{\arraystretch}{1}
+\begin{center}
+\begin{table}
+\begin{tabular}{|k{1cm}|k{1cm}|k{1cm}|k{1cm}|k{1cm}|k{1cm}|k{1cm}|@{}m{0pt}@{}}
+\hline
+& 1 & 2 & 3 & 4 & 5 & 6&\\[1ex]
+\hline
+4 & \st{t} & \st{g, m, t} & \st{g, t} & $\emptyset$ & -- & -- &\\[1ex]
+\hline
+5 & g, m & $\emptyset$ & \st{m, t} & $\emptyset$ & $\emptyset$ & -- &\\[1ex]
+\hline
+6 &$\emptyset$ & $\emptyset$ & $\emptyset$ & \st{m, t} & \st{g, t} & $\emptyset$ &\\[1ex]
+\hline
+\end{tabular}
+\caption{Fragment macierzy rozróżnialności zawierający istotne dane.}
+\end{table}
+$\newline$
+\begin{spacing}{1.5}
+$Red = \lbrace t \rbrace$\\
+\alert{g -- 1~~~~~~~~~~~~~m -- 1}
+\end{spacing}
+\end{center}
+\end{frame}
+
+
+\begin{frame}{Prosty algorytm redukcji}
+\renewcommand{\arraystretch}{1}
+\begin{center}
+\begin{table}
+\begin{tabular}{|k{1cm}|k{1cm}|k{1cm}|k{1cm}|k{1cm}|k{1cm}|k{1cm}|@{}m{0pt}@{}}
+\hline
+& 1 & 2 & 3 & 4 & 5 & 6&\\[1ex]
+\hline
+4 & \st{t} & \st{g, m, t} & \st{g, t} & $\emptyset$ & -- & -- &\\[1ex]
+\hline
+5 & \st{g, m} & $\emptyset$ & \st{m, t} & $\emptyset$ & $\emptyset$ & -- &\\[1ex]
+\hline
+6 &$\emptyset$ & $\emptyset$ & $\emptyset$ & \st{m, t} & \st{g, t} & $\emptyset$ &\\[1ex]
+\hline
+\end{tabular}
+\caption{Fragment macierzy rozróżnialności zawierający istotne dane.}
+\end{table}
+$\newline$
+\begin{spacing}{1.5}
+$Red = \lbrace t, g \rbrace \vee Red = \lbrace t, m \rbrace$\\
+\end{spacing}
+\end{center}
+\end{frame}
+
+
+\begin{frame}{Rdzeń}
+\renewcommand{\arraystretch}{1}
+\begin{center}
+\begin{table}
+\begin{tabular}{|k{1cm}|k{1cm}|k{1cm}|k{1cm}|k{1cm}|k{1cm}|k{1cm}|@{}m{0pt}@{}}
+\hline
+& 1 & 2 & 3 & 4 & 5 & 6&\\[1ex]
+\hline
+1 & $\emptyset$ & -- & -- & -- & -- & -- &\\[1ex]
+\hline
+2 & $\emptyset$ & $\emptyset$ & -- & -- & -- & -- &\\[1ex]
+\hline
+3 & $\emptyset$ & $\emptyset$ & $\emptyset$ & -- & -- & -- &\\[1ex]
+\hline
+4 & \alert{t} & g, m, t & g, t & $\emptyset$ & -- & -- &\\[1ex]
+\hline
+5 & g, m & $\emptyset$ & m, t & $\emptyset$ & $\emptyset$ & -- &\\[1ex]
+\hline
+6 &$\emptyset$ & $\emptyset$ & $\emptyset$ & m, t & g, t & $\emptyset$ &\\[1ex]
+\hline
+\end{tabular}
+\caption{Macierz rozróżnialności oryginalnego zbioru.}
+\end{table}
+\begin{spacing}{1.5}
+$Red = \lbrace \alert{t}, g \rbrace \vee Red = \lbrace \alert{t}, m \rbrace$\\
+\end{spacing}
+\end{center}
+\end{frame}
+
 
 \subsection{Problem złożoności dokładnych algorytmów redukcji}
-
+\begin{frame}{Problem złożoności wyznaczania reduktu}
+\begin{spacing}{1.5}
+Wyznaczanie reduktu w zbiorze przybliżonym jest problemem NP-zupełnym -- nie jest możliwe znalezienie rozwiązania w~czasie~wielomianowym.
+\end{spacing}
+\end{frame}
 
 \subsection{Alternatywne metody redukcji}
+\begin{frame}{Alternatywne metody wyznaczania reduktu}
+\begin{spacing}{1.5}
+Rozwiązania sprzętowe:\\
+\begin{itemize}
+\item specjalizowane układy programowalne (FPGA, CPLD).
+\end{itemize}
+
+Rozwiązania przybliżone -- wykorzystanie innych metod sztucznej~inteligencji:\\
+\begin{itemize}
+\item \alert{algorytmy ewolucyjne},
+\item algorytmy mrówkowe,
+\item inteligencja roju,
+\item metody połączone.
+\end{itemize}
+\end{spacing}
+\end{frame}
 
 
-\section{Propozycja algorytmu genetycznego do wyznaczania przybliżonych reduktów}
+\section{Propozycja algorytmu genetycznego do wyznaczania przybliżonych~reduktów}
 \begin{frame}
 \frametitle{Propozycja algorytmu genetycznego -- źródło}
 
@@ -271,7 +619,7 @@ W przeciwnym razie powrót do punktu 3.
 
 %------------------------------------------------
 \begin{frame}
-\frametitle{Redukcja na podstawie najlepszego osobnika}
+\frametitle{Wynik na podstawie najlepszego osobnika}
 \begin{spacing}{1.3}
 \begin{flushleft}
 \begin{enumerate}[1.]
