@@ -2,9 +2,12 @@
 \select@language {polish}
 \beamer@sectionintoc {1}{Redukcja}{3}{0}{1}
 \beamer@subsectionintoc {1}{1}{Istota problemu redukcji}{3}{0}{1}
-\beamer@subsectionintoc {1}{2}{Prosty algorytm wyznaczania reduktu}{11}{0}{1}
-\beamer@subsectionintoc {1}{3}{Problem z\IeC {\l }o\IeC {\.z}ono\IeC {\'s}ci dok\IeC {\l }adnych algorytm\IeC {\'o}w redukcji}{16}{0}{1}
-\beamer@subsectionintoc {1}{4}{Alternatywne metody redukcji}{17}{0}{1}
-\beamer@sectionintoc {2}{Propozycja algorytmu genetycznego do wyznaczania przybli\IeC {\.z}onych~redukt\IeC {\'o}w}{18}{0}{2}
-\beamer@subsectionintoc {2}{1}{Za\IeC {\l }o\IeC {\.z}enia algorytmu}{19}{0}{2}
-\beamer@subsectionintoc {2}{2}{Schemat dzia\IeC {\l }ania}{27}{0}{2}
+\beamer@subsectionintoc {1}{2}{Prosty algorytm wyznaczania reduktu}{8}{0}{1}
+\beamer@subsectionintoc {1}{3}{Problem z\IeC {\l }o\IeC {\.z}ono\IeC {\'s}ci dok\IeC {\l }adnych algorytm\IeC {\'o}w redukcji}{14}{0}{1}
+\beamer@subsectionintoc {1}{4}{Alternatywne metody redukcji}{15}{0}{1}
+\beamer@sectionintoc {2}{Propozycje algorytm\IeC {\'o}w genetycznych do wyznaczania przybli\IeC {\.z}onych~redukt\IeC {\'o}w}{16}{0}{2}
+\beamer@subsectionintoc {2}{1}{Za\IeC {\l }o\IeC {\.z}enia algorytmu}{17}{0}{2}
+\beamer@subsectionintoc {2}{2}{Schemat dzia\IeC {\l }ania}{25}{0}{2}
+\beamer@sectionintoc {3}{Druga propozycja algorytmu genetycznego}{27}{0}{3}
+\beamer@subsectionintoc {3}{1}{Za\IeC {\l }o\IeC {\.z}enia}{28}{0}{3}
+\beamer@subsectionintoc {3}{2}{Por\IeC {\'o}wnanie wynik\IeC {\'o}w dzia\IeC {\l }ania r\IeC {\'o}\IeC {\.z}nych wersji algorytmu}{33}{0}{3}

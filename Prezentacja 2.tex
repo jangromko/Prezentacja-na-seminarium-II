@@ -85,7 +85,7 @@
 \end{frame}}
 
 
-\begin{frame}{Plan referatu}{}
+\begin{frame}{Plan prezentacji}{}
 \tableofcontents
 \end{frame}
 
@@ -111,6 +111,27 @@ Zbiór atrybutów $B_{1} \subset A$ jest \textit{niezależny} w danym systemie i
 jak najmniej liczny. Może istnieć wiele reduktów.
 \end{block}
 \end{spacing}
+\end{frame}
+
+
+\begin{frame}{Przykładowy zbiór}
+\begin{center}
+\begin{table}
+\begin{tabular}{|k{1.2cm}|k{1.8cm}|k{1.8cm}|k{2.2cm}|k{1.4cm}|@{}m{0pt}@{}}
+\hline
+\textit{Pacjent} & \textit{Ból głowy} & \textit{Ból mięśni} & \textit{Temperatura} &  \textit{Grypa} &\\[1ex]
+\hline
+1 & nie & tak & podwyższona & tak &\\[1ex]
+2 & tak & nie & podwyższona & tak &\\[1ex]
+3 & tak & tak & wysoka & tak &\\[1ex]
+4 & nie & tak & normalna & nie &\\[1ex]
+5 & tak & nie & podwyższona & nie &\\[1ex]
+6 & nie & nie & wysoka & tak &\\[1ex]
+\hline
+\end{tabular}
+\caption{Tablica decyzyjna przykładowego zbioru.}
+\end{table}
+\end{center}
 \end{frame}
 
 
@@ -148,131 +169,6 @@ jak najmniej liczny. Może istnieć wiele reduktów.
 
 \end{frame}
 
-
-\begin{frame}{Tworzenie macierzy rozróżnialności}
-\renewcommand{\arraystretch}{1}
-\begin{center}
-
-\begin{table}
-\begin{tabular}{|k{1.2cm}|k{1.8cm}|k{1.8cm}|k{2.2cm}|k{1.4cm}|@{}m{0pt}@{}}
-\hline
-\textit{Pacjent} & \textit{Ból głowy} & \textit{Ból mięśni} & \textit{Temperatura} &  \textit{Grypa} &\\[1ex]
-\hline
-1 & nie & tak & podwyższona & tak &\\[1ex]
-4 & nie & tak & normalna & nie &\\[1ex]
-\hline
-\end{tabular}
-\caption{Fragment tablicy decyzyjnej.}
-\end{table}
-
-\begin{table}
-\begin{tabular}{|k{1cm}|k{1cm}|k{1cm}|k{1cm}|k{1cm}|k{1cm}|k{1cm}|@{}m{0pt}@{}}
-\hline
-& 1 & 2 & 3 & 4 & 5 & 6 & \\[1ex]
-\hline
-4 & t & ? & ? & $\emptyset$ & -- & -- &\\[1ex]
-\hline
-\end{tabular}
-\caption{Fragment macierzy rozróżnialności.}
-\end{table}
-
-\end{center}
-
-\end{frame}
-
-
-\begin{frame}{Tworzenie macierzy rozróżnialności}
-\renewcommand{\arraystretch}{1}
-\begin{center}
-
-\begin{table}
-\begin{tabular}{|k{1.2cm}|k{1.8cm}|k{1.8cm}|k{2.2cm}|k{1.4cm}|@{}m{0pt}@{}}
-\hline
-\textit{Pacjent} & \textit{Ból głowy} & \textit{Ból mięśni} & \textit{Temperatura} &  \textit{Grypa} &\\[1ex]
-\hline
-2 & tak & nie & podwyższona & tak &\\[1ex]
-4 & nie & tak & normalna & nie &\\[1ex]
-\hline
-\end{tabular}
-\caption{Fragment tablicy decyzyjnej.}
-\end{table}
-
-\begin{table}
-\begin{tabular}{|k{1cm}|k{1cm}|k{1cm}|k{1cm}|k{1cm}|k{1cm}|k{1cm}|@{}m{0pt}@{}}
-\hline
-& 1 & 2 & 3 & 4 & 5 & 6 & \\[1ex]
-\hline
-4 & t & g, m, t & ? & $\emptyset$ & -- & -- &\\[1ex]
-\hline
-\end{tabular}
-\caption{Fragment macierzy rozróżnialności.}
-\end{table}
-
-\end{center}
-
-\end{frame}
-
-
-\begin{frame}{Tworzenie macierzy rozróżnialności}
-\renewcommand{\arraystretch}{1}
-\begin{center}
-
-\begin{table}
-\begin{tabular}{|k{1.2cm}|k{1.8cm}|k{1.8cm}|k{2.2cm}|k{1.4cm}|@{}m{0pt}@{}}
-\hline
-\textit{Pacjent} & \textit{Ból głowy} & \textit{Ból mięśni} & \textit{Temperatura} &  \textit{Grypa} &\\[1ex]
-\hline
-3 & tak & tak & wysoka & tak &\\[1ex]
-4 & nie & tak & normalna & nie &\\[1ex]
-\hline
-\end{tabular}
-\caption{Fragment tablicy decyzyjnej.}
-\end{table}
-
-\begin{table}
-\begin{tabular}{|k{1cm}|k{1cm}|k{1cm}|k{1cm}|k{1cm}|k{1cm}|k{1cm}|@{}m{0pt}@{}}
-\hline
-& 1 & 2 & 3 & 4 & 5 & 6 & \\[1ex]
-\hline
-4 & t & g, m, t & g, t & $\emptyset$ & -- & -- &\\[1ex]
-\hline
-\end{tabular}
-\caption{Fragment macierzy rozróżnialności.}
-\end{table}
-
-\end{center}
-
-\end{frame}
-
-
-
-\begin{frame}{Macierz rozróżnialności -- oryginalny zbiór}
-\renewcommand{\arraystretch}{1}
-\begin{center}
-\begin{table}
-\begin{tabular}{|k{1cm}|k{1cm}|k{1cm}|k{1cm}|k{1cm}|k{1cm}|k{1cm}|@{}m{0pt}@{}}
-\hline
-& 1 & 2 & 3 & 4 & 5 & 6&\\[1ex]
-\hline
-1 & $\emptyset$ & -- & -- & -- & -- & -- &\\[1ex]
-\hline
-2 & $\emptyset$ & $\emptyset$ & -- & -- & -- & -- &\\[1ex]
-\hline
-3 & $\emptyset$ & $\emptyset$ & $\emptyset$ & -- & -- & -- &\\[1ex]
-\hline
-4 & t & g, m, t & g, t & $\emptyset$ & -- & -- &\\[1ex]
-\hline
-5 & g, m & $\emptyset$ & m, t & $\emptyset$ & $\emptyset$ & -- &\\[1ex]
-\hline
-6 &$\emptyset$ & $\emptyset$ & $\emptyset$ & m, t & g, t & $\emptyset$ &\\[1ex]
-\hline
-\end{tabular}
-\caption{Macierz rozróżnialności.}
-\end{table}
-
-\end{center}
-
-\end{frame}
 
 
 
@@ -426,6 +322,23 @@ $Red = \lbrace \alert{t}, g \rbrace \vee Red = \lbrace \alert{t}, m \rbrace$\\
 \end{frame}
 
 
+\begin{frame}{Zbiory przybliżone -- definicje}
+\begin{spacing}{1.3}
+
+\begin{block}{Atrybut nieusuwalny}
+Atrybut $p\in P_{1}$ jest \textit{nieusuwalny} z $P_{1}$, jeśli dla $P_{2} = P_{1}\setminus\lbrace p\rbrace$ zachodzi $\widetilde{P_{2}} \neq \widetilde{P_{1}}$. W przeciwnym przypadku atrybut $p$ jest \textit{zbędny}.
+\end{block}
+
+\begin{block}{Rdzeń}
+\textit{Rdzeniem P} nazywa się zbiór wszystkich atrybutów nieusuwalnych\\
+ze zbioru P, co zapisywane jest w następujący sposób:
+$$CORE(P) = \lbrace p \in P : \widetilde{P'} \neq \widetilde{P}, P'=P\setminus \lbrace p \rbrace\rbrace.$$
+\end{block}
+
+\end{spacing}
+\end{frame}
+
+
 \subsection{Problem złożoności dokładnych algorytmów redukcji}
 \begin{frame}{Problem złożoności wyznaczania reduktu}
 \begin{spacing}{1.5}
@@ -452,7 +365,7 @@ Rozwiązania przybliżone -- wykorzystanie innych metod sztucznej~inteligencji:\
 \end{frame}
 
 
-\section{Propozycja algorytmu genetycznego do wyznaczania przybliżonych~reduktów}
+\section{Propozycje algorytmów genetycznych do wyznaczania przybliżonych~reduktów}
 \begin{frame}
 \frametitle{Propozycja algorytmu genetycznego -- źródło}
 
@@ -486,7 +399,7 @@ Wynik optymalnej redukcji zbioru.
 \begin{spacing}{1.5}
 \begin{flushleft}
 Chromosomem będzie jednowymiarowa tablica binarna o stałej długości. Długość chromosomu odpowiada liczbie atrybutów warunkowych.\\
-Każdy z genów odpowiada dokładnie jednemu atryutowi warunkowemu, przy czym wartość 1 będzie ozbaczała, iż atrybut jest~wybrany,
+Każdy z genów odpowiada dokładnie jednemu atrybutowi warunkowemu, przy czym wartość 1 będzie ozbaczała, iż atrybut jest~wybrany,
 0~w~przeciwnym wypadku.
 \end{flushleft}
 \end{spacing}
@@ -637,6 +550,76 @@ dla którego nie został on wcześniej wyliczony. Jeśli $\sigma(a) = 0$,\\ wart
 
 
 
+\section{Druga propozycja algorytmu genetycznego}
+
+
+\begin{frame}{Druga propozycja algorytmu genetycznego}
+Jakub Wróblewski\\
+\newblock Adaptacyjne metody klasyfikacji obiektów (2001)
+\end{frame}
+
+\subsection{Założenia}
+\begin{frame}{Podstawowe założenia}
+\begin{spacing}{1.5}
+\begin{itemize}
+\item Sprowadzenie problemu wyznaczenia reduktu do problemu pokrycia macierzy, w której kolumny odpowiadają atrybutom, a~wiersze parom obiektów, które wymagają rozróżnienia.
+\item Należy znaleźć pokrycie kolumnowe takiej macierzy.
+\end{itemize}
+\end{spacing}
+\end{frame}
+
+
+\begin{frame}{MOX}{Modified Order Crossover}
+\begin{spacing}{1.5}
+Krzyżowane są permutacje -- w przypadku klasycznego operatora krzyżowania wynik w większości przypadków nie byłby permutacją.
+Kroki działania operatora MOX:\\
+\begin{itemize}
+\item Losowanie jednakowej w obu osobnikach sekcji dopasowania; początek sekcji jest ustalony na początku chromosomu.
+\item Sekcje dopasowania obu osobników rodzicielskich pozostawiane~są bez~zmian, natomiast pozostałe części chromosomów są przekształcane w~ten sposób, aby występujące w~nich wartości liczbowe były ustawione w~takiej kolejności, w~jakiej występują u~drugiego osobnika rodzicielskiego.
+\end{itemize}
+\end{spacing}
+\end{frame}
+
+\begin{frame}{MOX}{Modified Order Crossover}
+\begin{spacing}{1.5}
+Krzyżowane są permutacje -- w przypadku klasycznego operatora krzyżowania wynik w większości przypadków nie byłby permutacją.
+Kroki działania operatora MOX:\\
+\begin{enumerate}
+\item Losowanie jednakowej w obu osobnikach sekcji dopasowania; początek sekcji jest ustalony na początku chromosomu.
+\item Sekcje dopasowania obu osobników rodzicielskich pozostawiane~są bez~zmian, natomiast pozostałe części chromosomów są przekształcane w~ten sposób, aby występujące w~nich wartości liczbowe były ustawione w~takiej kolejności, w~jakiej występują u~drugiego osobnika rodzicielskiego.
+\end{enumerate}
+\end{spacing}
+\end{frame}
+
+
+\begin{frame}{MOX -- przykład}
+\begin{spacing}{1.5}
+\begin{center}
+\includegraphics[width=0.9\textwidth]{Grafiki/MOX.png}
+\end{center}
+\end{spacing}
+\end{frame}
+
+
+
+
+\begin{frame}{RAND}
+\begin{itemize}
+\item Algorytm heurystyczno-losowy.
+\item Zamiast algorytmu genetycznego używany jest losowy generator permutacji.
+\end{itemize}
+
+\end{frame}
+
+
+\subsection{Porównanie wyników działania różnych wersji algorytmu}
+
+\begin{frame}{Porównanie działania wersji algorytmu}
+\includegraphics[width=1\textwidth]{Grafiki/wykresJW.png}
+\end{frame}
+
+
+
 
 
 % KONIEC – BIBLIOGRAFIA I SLAJD KOŃCOWY NA PYTANIA
@@ -650,10 +633,11 @@ dla którego nie został on wcześniej wyliczony. Jeśli $\sigma(a) = 0$,\\ wart
 \newblock Zbiory przybliżone -- nowa matematyczna metoda analizy danych 
 \bibitem{p1} Leszek Rutkowski
 \newblock Metody i techniki sztucznej inteligencji
+\bibitem{p1} Lian Chen, Hongling Liu, Zilong Wan
+\newblock An Attribute Reduction Algorithm Based on Rough Set Theory
+and~an~Improved Genetic Algorithm
 \bibitem{p1} Jakub Wróblewski
 \newblock Adaptacyjne metody klasyfikacji obiektów
-\bibitem{p1} Maciej Kopczyński
-\newblock Wspomaganie decyzji oparte na sprzętowej realizacji metod zbiorów~przybliżonych
 \end{thebibliography}
 }
 \end{frame}
